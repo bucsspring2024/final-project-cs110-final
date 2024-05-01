@@ -100,7 +100,7 @@ class Controller:
             instrured_text_x_pos = 0
             instrured_text_y_pos = instrublue_text_y_pos + space_bw_text
             self.screen.blit(text, (instrured_text_x_pos, instrured_text_y_pos))
-            text = font.render("Try to get the ball past the opposing teams bumper", True, "black")
+            text = font.render("Try to get the puck past the opposing teams bumper", True, "black")
             instrugoal_text_x_pos = 0
             instrugoal_text_y_pos = instrured_text_y_pos + space_bw_text
             self.screen.blit(text, (instrugoal_text_x_pos, instrugoal_text_y_pos))
