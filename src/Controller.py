@@ -77,7 +77,7 @@ class Controller:
 
             self.screen.fill(self.white)
             font = pygame.font.Font(None, 100)
-            text = font.render("Air Hockey: Blitz Mania", True, "black")
+            text = font.render("Air Hockey Mania", True, "black")
             intro_text_rect = text.get_rect()
             half_text_width = intro_text_rect.width // 2
             half_text_height = intro_text_rect.height // 2
@@ -92,11 +92,11 @@ class Controller:
             instru_text_x_pos = 0
             instru_text_y_pos = self.window_height - (self.window_height / 3)
             self.screen.blit(text, (instru_text_x_pos, instru_text_y_pos))
-            text = font.render("Team Blue: use the arrow keys to move your paddle left and right", True, "black")
+            text = font.render("Team Red: use the a and d keys to move your paddle left and right", True, "black")
             instrublue_text_x_pos = 0
             instrublue_text_y_pos = instru_text_y_pos + space_bw_text
             self.screen.blit(text, (instrublue_text_x_pos, instrublue_text_y_pos))
-            text = font.render("Team Red: use the a and d keys to move your paddle left and right", True, "black")
+            text = font.render("Team Blue: use the arrow keys to move your paddle left and right", True, "black")
             instrured_text_x_pos = 0
             instrured_text_y_pos = instrublue_text_y_pos + space_bw_text
             self.screen.blit(text, (instrured_text_x_pos, instrured_text_y_pos))
@@ -104,7 +104,7 @@ class Controller:
             instrugoal_text_x_pos = 0
             instrugoal_text_y_pos = instrured_text_y_pos + space_bw_text
             self.screen.blit(text, (instrugoal_text_x_pos, instrugoal_text_y_pos))
-            text = font.render("First team to 5 points wins!", True, "black")
+            text = font.render("First team to 3 points wins!", True, "black")
             instruwin_text_x_pos = 0
             instruwin_text_y_pos = instrugoal_text_y_pos + space_bw_text
             self.screen.blit(text, (instruwin_text_x_pos, instruwin_text_y_pos))
