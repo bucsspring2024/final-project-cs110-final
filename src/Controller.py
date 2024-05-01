@@ -77,7 +77,7 @@ class Controller:
 
             self.screen.fill(self.white)
             font = pygame.font.Font(None, 100)
-            text = font.render("PADDLES", True, "white")
+            text = font.render("Air Hockey: Blitz Mania", True, "black")
             intro_text_rect = text.get_rect()
             half_text_width = intro_text_rect.width // 2
             half_text_height = intro_text_rect.height // 2
@@ -88,27 +88,27 @@ class Controller:
 
             space_bw_text = 30
             font = pygame.font.Font(None, 30)
-            text = font.render("Instructions:", True, "white")
+            text = font.render("Instructions:", True, "black")
             instru_text_x_pos = 0
             instru_text_y_pos = self.window_height - (self.window_height / 3)
             self.screen.blit(text, (instru_text_x_pos, instru_text_y_pos))
-            text = font.render("Team Blue: use the arrow keys to move your paddle left and right", True, "white")
+            text = font.render("Team Blue: use the arrow keys to move your paddle left and right", True, "black")
             instrublue_text_x_pos = 0
             instrublue_text_y_pos = instru_text_y_pos + space_bw_text
             self.screen.blit(text, (instrublue_text_x_pos, instrublue_text_y_pos))
-            text = font.render("Team Red: use the a and d keys to move your paddle left and right", True, "white")
+            text = font.render("Team Red: use the a and d keys to move your paddle left and right", True, "black")
             instrured_text_x_pos = 0
             instrured_text_y_pos = instrublue_text_y_pos + space_bw_text
             self.screen.blit(text, (instrured_text_x_pos, instrured_text_y_pos))
-            text = font.render("Try to get the ball past the opposing teams paddle", True, "white")
+            text = font.render("Try to get the ball past the opposing teams paddle", True, "black")
             instrugoal_text_x_pos = 0
             instrugoal_text_y_pos = instrured_text_y_pos + space_bw_text
             self.screen.blit(text, (instrugoal_text_x_pos, instrugoal_text_y_pos))
-            text = font.render("First team to 5 points wins!", True, "white")
+            text = font.render("First team to 5 points wins!", True, "black")
             instruwin_text_x_pos = 0
             instruwin_text_y_pos = instrugoal_text_y_pos + space_bw_text
             self.screen.blit(text, (instruwin_text_x_pos, instruwin_text_y_pos))
-            text = font.render("Press space to start each round", True, "white")
+            text = font.render("Press space to start each round", True, "black")
             instrustart_text_x_pos = 0
             instrustart_text_y_pos = instruwin_text_y_pos + space_bw_text
             self.screen.blit(text, (instrustart_text_x_pos, instrustart_text_y_pos))
