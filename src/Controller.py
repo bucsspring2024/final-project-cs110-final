@@ -230,9 +230,9 @@ class Controller:
             elif self.red_score <= self.blue_score:
                 winner = "BLUE"
                 
-            self.screen.fill(self.green)
+            self.screen.fill(self.white)
             font = pygame.font.Font(None, 100)
-            text = font.render(f"TEAM {winner} WINS!", True, "white")
+            text = font.render(f"TEAM {winner} WINS!", True, "black")
             winner_text_rect = text.get_rect()
             half_text_width = winner_text_rect.width // 2
             half_text_height = winner_text_rect.height // 2
@@ -242,7 +242,7 @@ class Controller:
             self.screen.blit(text, winner_text_rect_center)
             
             font = pygame.font.Font(None, 60)
-            text = font.render(f"FINAL SCORE: Blue: {self.blue_score} Red: {self.red_score}", True, "white")
+            text = font.render(f"FINAL SCORE: Blue: {self.blue_score} Red: {self.red_score}", True, "black")
             score_text_rect = text.get_rect()
             half_text_width = score_text_rect.width // 2
             half_text_height = score_text_rect.height // 2
@@ -253,7 +253,7 @@ class Controller:
             
             if old_result != None:
                 font = pygame.font.Font(None, 40)
-                text = font.render(old_result, True, "white")
+                text = font.render(old_result, True, "black")
                 previousscore_text_rect = text.get_rect()
                 half_text_width = previousscore_text_rect.width // 2
                 half_text_height = previousscore_text_rect.height // 2
