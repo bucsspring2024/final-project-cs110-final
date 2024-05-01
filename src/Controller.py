@@ -92,15 +92,15 @@ class Controller:
             instru_text_x_pos = 0
             instru_text_y_pos = self.window_height - (self.window_height / 3)
             self.screen.blit(text, (instru_text_x_pos, instru_text_y_pos))
-            text = font.render("Team Red: use the a and d keys to move your paddle left and right", True, "black")
+            text = font.render("Team Red: use the a and d keys to move your bumper left and right", True, "black")
             instrublue_text_x_pos = 0
             instrublue_text_y_pos = instru_text_y_pos + space_bw_text
             self.screen.blit(text, (instrublue_text_x_pos, instrublue_text_y_pos))
-            text = font.render("Team Blue: use the arrow keys to move your paddle left and right", True, "black")
+            text = font.render("Team Blue: use the arrow keys to move your bumper left and right", True, "black")
             instrured_text_x_pos = 0
             instrured_text_y_pos = instrublue_text_y_pos + space_bw_text
             self.screen.blit(text, (instrured_text_x_pos, instrured_text_y_pos))
-            text = font.render("Try to get the ball past the opposing teams paddle", True, "black")
+            text = font.render("Try to get the ball past the opposing teams bumper", True, "black")
             instrugoal_text_x_pos = 0
             instrugoal_text_y_pos = instrured_text_y_pos + space_bw_text
             self.screen.blit(text, (instrugoal_text_x_pos, instrugoal_text_y_pos))
