@@ -24,7 +24,7 @@ class Screen:
         self.window_width = 500
         self.window_height = 900
         self.screen = pygame.display.set_mode([self.window_width, self.window_height])
-        self.white = (255, 255, 0)
+        self.white = (255, 255, 255)  # Set background color to white
         
     def startscreen(self):
         """
@@ -70,8 +70,8 @@ class Screen:
         """
         Renders the main game screen with a dividing line.
         """
-        self.screen.fill(self.green)
-        pygame.draw.line(self.screen, "white", (0, self.window_height/2), (self.window_width, self.window_height/2), 2)
+        self.screen.fill(self.white)
+        pygame.draw.line(self.screen, "black", (0, self.window_height/2), (self.window_width, self.window_height/2), 2)
         
         pygame.display.flip()
         
@@ -84,9 +84,9 @@ class Screen:
         - red_score (int): The score of the red team.
         - blue_score (int): The score of the blue team.
         """
-        self.screen.fill(self.green)
+        self.screen.fill(self.white)
         font = pygame.font.Font(None, 100)
-        text = font.render(f"TEAM {winner} WINS!", True, "white")
+        text = font.render(f"TEAM {winner} WINS!", True, "black")
         winner_text_rect = text.get_rect()
         half_text_width = winner_text_rect.width // 2
         half_text_height = winner_text_rect.height // 2
@@ -96,7 +96,7 @@ class Screen:
         self.screen.blit(text, winner_text_rect_center)
         
         font = pygame.font.Font(None, 48)
-        text = font.render(f"Team Red: {red_score}", True, "white")
+        text = font.render(f"Team Red: {red_score}", True, "black")
         red_text_rect = text.get_rect()
         half_text_width = red_text_rect.width // 2
         half_text_height = red_text_rect.height // 2
@@ -106,7 +106,7 @@ class Screen:
         self.screen.blit(text, red_text_rect_center)
         
         font = pygame.font.Font(None, 48)
-        text = font.render(f"Team Blue: {blue_score}", True, "white")
+        text = font.render(f"Team Blue: {blue_score}", True, "black")
         blue_text_rect = text.get_rect()
         half_text_width = blue_text_rect.width // 2
         half_text_height = blue_text_rect.height // 2

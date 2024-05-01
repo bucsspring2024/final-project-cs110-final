@@ -38,9 +38,7 @@ class Controller:
         ball_radius = 30
         self.window_width = 750
         self.window_height = 800
-        self.green = (6, 168, 0)
-        obstacle_long = 75
-        obstacle_thin = 2
+        self.white = (255, 255, 255)
         
 
         self.screen = pygame.display.set_mode([self.window_width, self.window_height])
@@ -77,7 +75,7 @@ class Controller:
                     if event.key == pygame.K_ESCAPE:
                         self.state = "QUIT"
 
-            self.screen.fill(self.green)
+            self.screen.fill(self.white)
             font = pygame.font.Font(None, 100)
             text = font.render("PADDLES", True, "white")
             intro_text_rect = text.get_rect()
@@ -165,7 +163,7 @@ class Controller:
                 self.state = "END"
                     
             
-            self.screen.fill(self.green)
+            self.screen.fill(self.white)
             pygame.draw.line(self.screen, "black", (0, self.window_height / 2), (self.window_width, self.window_height / 2), 2)
             self.allsprites.draw(self.screen)
             self.ball.move()

@@ -37,7 +37,7 @@ class Ball(pygame.sprite.Sprite):
         self.y_vel = 0
         # Surface -> Rectangles
         self.image = pygame.surface.Surface([self.radius, self.radius])
-        self.image.fill("white")
+        self.image.fill((139, 69, 19))  # Set ball color to brown
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
