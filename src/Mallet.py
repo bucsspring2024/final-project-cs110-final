@@ -18,7 +18,7 @@ class Mallet(pygame.sprite.Sprite):
         if dir == "up":
             self.rect.y += self.mallet_speed
         if dir == "down":
-            self.rect.x -= self.mallet_speed
+            self.rect.y -= self.mallet_speed
         if dir == "left":
             self.rect.x -= self.mallet_speed
         if dir == "right":

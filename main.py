@@ -5,7 +5,7 @@ def main():
     pygame.init()
     pygame.display.set_mode()
     game = Controller()
-    game.mainloop()
+    game.main_loop()
     #Create an instance on your controller object
     #Call your mainloop
     
