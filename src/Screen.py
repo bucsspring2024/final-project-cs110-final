@@ -47,19 +47,19 @@ class Screen:
         instru_text_x_pos = 0
         instru_text_y_pos = self.window_height - (self.window_height/3)
         self.screen.blit(text, (instru_text_x_pos, instru_text_y_pos))
-        text = font.render("Team Blue: use the arrow keys to move your paddle left and right", True, "white")
+        text = font.render("Team Blue: use the arrow keys to move your bumper left and right", True, "white")
         instrublue_text_x_pos = 0
         instrublue_text_y_pos = instru_text_y_pos + space_bw_text
         self.screen.blit(text, (instrublue_text_x_pos, instrublue_text_y_pos))
-        text = font.render("Team Red: use the a and d keys to move your paddle left and right", True, "white")
+        text = font.render("Team Red: use the a and d keys to move your bumper left and right", True, "white")
         instrured_text_x_pos = 0
         instrured_text_y_pos = instrublue_text_y_pos + space_bw_text
         self.screen.blit(text, (instrured_text_x_pos, instrured_text_y_pos))
-        text = font.render("Try to get the ball past the opposing teams paddle", True, "white")
+        text = font.render("Try to get the puck past the opposing teams bumper", True, "white")
         instrugoal_text_x_pos = 0
         instrugoal_text_y_pos = instrured_text_y_pos + space_bw_text
         self.screen.blit(text, (instrugoal_text_x_pos, instrugoal_text_y_pos))
-        text = font.render("First team to 7 points wins!", True, "white")
+        text = font.render("First team to 3 points wins!", True, "white")
         instruwin_text_x_pos = 0
         instruwin_text_y_pos = instrugoal_text_y_pos + space_bw_text
         self.screen.blit(text, (instruwin_text_x_pos, instruwin_text_y_pos))
@@ -68,7 +68,7 @@ class Screen:
         
     def gamescreen(self):
         """
-        Renders the main game screen with a dividing line.
+        Creates a dividing line on the main game screen.
         """
         self.screen.fill(self.white)
         pygame.draw.line(self.screen, "black", (0, self.window_height/2), (self.window_width, self.window_height/2), 2)

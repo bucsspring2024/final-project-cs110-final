@@ -2,36 +2,36 @@ import pygame
 import random
 import math
 
-from src.Ball import Ball
-from src.Paddle import Paddle
+from src.Puck import Puck
+from src.Bumper import Bumper
 
 class Controller:
     """
     Class representing the main controller for the game.
 
     Attributes:
-    - red_score (int): The initial score for the red team.
-    - blue_score (int): The initial score for the blue team.
-    - window_width (int): The width of the game window.
-    - window_height (int): The height of the game window.
-    - green (tuple): RGB values representing the color green.
-    - screen (pygame.Surface): The game window surface.
-    - ball (Ball): The ball object in the game.
-    - sample_paddle (Paddle): A sample paddle used for initialization.
-    - red_paddle (Paddle): The paddle for the red team.
-    - blue_paddle (Paddle): The paddle for the blue team.
-    - red_score (int): The current score of the red team.
-    - blue_score (int): The current score of the blue team.
-    - allsprites (pygame.sprite.Group): A group containing all game sprites.
-    - state (str): The current state of the game ("HOME", "GAME", "END", or "QUIT").
+    red_score (int): The initial score for the red team.
+    blue_score (int): The initial score for the blue team.
+    window_width (int): The width of the game window.
+    window_height (int): The height of the game window.
+    green (tuple): RGB values representing the color green.
+    screen (pygame.Surface): The game window surface.
+    ball (Ball): The ball object in the game.
+    sample_paddle (Paddle): A sample paddle used for initialization.
+    red_paddle (Paddle): The paddle for the red team.
+    blue_paddle (Paddle): The paddle for the blue team.
+    red_score (int): The current score of the red team.
+    blue_score (int): The current score of the blue team.
+    allsprites (pygame.sprite.Group): A group containing all game sprites.
+    state (str): The current state of the game ("HOME", "GAME", "END", or "QUIT").
     """
     def __init__(self, red_score=0, blue_score=0):
         """
         Initializes the game controller with optional initial scores.
 
         Parameters:
-        - red_score (int): The initial score for the red team (default is 0).
-        - blue_score (int): The initial score for the blue team (default is 0).
+        red_score (int): The initial score for the red team (default is 0).
+        blue_score (int): The initial score for the blue team (default is 0).
         """
         pygame.init()
         buffer = 10
@@ -42,10 +42,10 @@ class Controller:
         
 
         self.screen = pygame.display.set_mode([self.window_width, self.window_height])
-        self.ball = Ball(self.window_width / 2 - (ball_radius / 2), self.window_height / 2 - (ball_radius / 2), ball_radius)
-        self.sample_paddle = Paddle()
-        self.red_paddle = Paddle((self.window_width / 2) - (self.sample_paddle.width / 2), buffer, "red")
-        self.blue_paddle = Paddle((self.window_width / 2) - (self.sample_paddle.width / 2), (self.window_height - buffer - self.sample_paddle.height), "blue")
+        self.ball = Puck(self.window_width / 2 - (ball_radius / 2), self.window_height / 2 - (ball_radius / 2), ball_radius)
+        self.sample_paddle = Bumper()
+        self.red_paddle = Bumper((self.window_width / 2) - (self.sample_paddle.width / 2), buffer, "red")
+        self.blue_paddle = Bumper((self.window_width / 2) - (self.sample_paddle.width / 2), (self.window_height - buffer - self.sample_paddle.height), "blue")
 
         
         self.red_score = red_score
@@ -208,7 +208,7 @@ class Controller:
         """
         Game loop for the end screen.
 
-        Displays the winner and final scores, and updates the previous game result.
+        Displays the winner and final scores.
         """  
         new_result = f"PREVIOUS GAME FINAL SCORE: Blue: {self.blue_score} Red: {self.red_score}"
         try:
@@ -250,17 +250,6 @@ class Controller:
             score_text_y_pos = (self.window_height // 4) - half_text_height + 60
             score_text_rect_center = (score_text_x_pos, score_text_y_pos)
             self.screen.blit(text, score_text_rect_center)
-            
-            if old_result != None:
-                font = pygame.font.Font(None, 40)
-                text = font.render(old_result, True, "black")
-                previousscore_text_rect = text.get_rect()
-                half_text_width = previousscore_text_rect.width // 2
-                half_text_height = previousscore_text_rect.height // 2
-                previousscore_text_x_pos = (self.window_width // 2) - half_text_width
-                previousscore_text_y_pos = (self.window_height // 4) - half_text_height + 100
-                previousscore_text_rect_center = (previousscore_text_x_pos, previousscore_text_y_pos)
-                self.screen.blit(text, previousscore_text_rect_center)
             
             pygame.display.flip()
 

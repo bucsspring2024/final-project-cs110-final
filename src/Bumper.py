@@ -1,7 +1,7 @@
 import pygame
 
 
-class Paddle(pygame.sprite.Sprite):
+class Bumper(pygame.sprite.Sprite):
     def __init__(self, x=1, y=1, color="black", width=150, height=10):
         """
         Initialize the paddle objects
@@ -23,23 +23,23 @@ class Paddle(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
-        self.paddle_vel = 90
+        self.bumper_vel = 90
 
     def move(self, dir):
         """
         Move the paddle left or right based on the specified direction.
 
         Parameters:
-        dir (str): The direction in which to move the paddle ("left" or "right").
+        dir (str): The direction in which to move the paddle.
         """
-        if dir == "right":
-            self.rect.x += self.paddle_vel
         if dir == "left":
-            self.rect.x -= self.paddle_vel
-
+            self.rect.x -= self.bumper_vel
+        if dir == "right":
+            self.rect.x += self.bumper_vel
+        
     def reset(self):
         """
-        Reset the paddle to its initial position.
+        Reset the paddle position.
         """
 
         self.rect.x = self.starting_xpos

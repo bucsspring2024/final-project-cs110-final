@@ -1,6 +1,6 @@
 import pygame
 
-class Ball(pygame.sprite.Sprite):
+class Puck(pygame.sprite.Sprite):
     """
     A class representing a ball in a game.
 
@@ -13,14 +13,14 @@ class Ball(pygame.sprite.Sprite):
     y_vel (int): The current velocity of the ball in the y-direction.
 
     Methods:
-     __init__(self, x, y, radius): Initializes a new Ball instance with the specified parameters.
+    __init__(self, x, y, radius): Initializes a new Ball instance with the specified parameters.
     move(self): Updates the position of the ball based on its current velocity.
     reset(self): Resets the position and velocity of the ball to its initial state.
     """
 
     def __init__(self, x, y, radius):
         """
-        Initializes a new Ball instance.
+        Initializes a new Ball object.
 
         Parameters:
         x (int): The initial x-coordinate of the ball.
@@ -52,7 +52,7 @@ class Ball(pygame.sprite.Sprite):
 
     def reset(self):
         """
-        Resets the position and velocity of the ball.
+        Resets ball position and velocity.
         """
         self.rect.x = self.starting_xpos
         self.rect.y = self.starting_ypos
