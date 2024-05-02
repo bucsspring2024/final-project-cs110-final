@@ -35,12 +35,10 @@ class Puck(pygame.sprite.Sprite):
         self.max_vel = 1
         self.x_vel = 0
         self.y_vel = 0
-        # Surface -> Rectangles
-        self.image = pygame.surface.Surface([self.radius, self.radius])
-        self.image.fill((139, 69, 19))  # Set ball color to brown
-        self.rect = self.image.get_rect()
-        self.rect.x = x
-        self.rect.y = y
+        # Surface -> circle
+        self.image = pygame.Surface((radius * 2, radius * 2), pygame.SRCALPHA)  # Create a transparent surface
+        pygame.draw.circle(self.image, (139, 69, 19), (radius, radius), radius)  # Draw a filled circle on the surface
+        self.rect = self.image.get_rect(center=(x, y))
 
     def move(self):
         """
