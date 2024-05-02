@@ -159,7 +159,7 @@ class Controller:
                     if event.key == pygame.K_s:
                         self.green_bumper.move(None, "down")
                     if event.key == pygame.K_LEFT:
-                        self.purple_pbumper.move("left", None)
+                        self.purple_bumper.move("left", None)
                     if event.key == pygame.K_RIGHT:
                         self.purple_bumper.move("right", None)
                     if event.key == pygame.K_UP:
