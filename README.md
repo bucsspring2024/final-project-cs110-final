@@ -24,7 +24,7 @@ The project is a simulation of a simple and well known arcade game known as air 
 
 ### Final Design
 
-![final gui](assets/running_program_screenshot.png)
+![final gui](assets/final_gui_design.png)
 
 ## Program Design
 
@@ -40,7 +40,7 @@ The project is a simulation of a simple and well known arcade game known as air 
 
 - Puck: The puck class creates the puck and takes in three arguments (x location, y location, and radius). This class also has a method that moves the puck across the screen and a reset method that resets the puck to the middle of the screen.
 
-- Bumper: The bumper class creates a bumper and takes in multiple arguments (x location,y location, the color of the bumper, the width of the bumper, and the height of the bumper). The paddle has a move method that moves right when the direction that it takes in is "right" and left when the direction is "left". The Bumper class also has a reset method that resets the bumper to its starting position.
+- Bumper: The bumper class creates a bumper and takes in multiple arguments (x location,y location, the color of the bumper, the width of the bumper, and the height of the bumper). The bumper has a move method that moves right when the direction that it takes in is "right" and left when the direction is "left". The Bumper class also has a reset method that resets the bumper to its starting position.
 
 - Controller: The Controller class creates the entire program and puts all of the different classes together so they have a purpose and use. The Controller class has the following methods:
 
@@ -50,7 +50,7 @@ The project is a simulation of a simple and well known arcade game known as air 
 
     score(): Responsible for displaying the score on the screen.
 
-    ameloop(): Creates and organizes everything that is used in the actual game. This includes but is not limited to drawing the game board, accounting for collisions between the ball, paddle, and walls, and changing the score when a goal is scored.
+    ameloop(): Creates and organizes everything that is used in the actual game. This includes but is not limited to drawing the game board, accounting for collisions between the puck, bumper, and walls, and changing the score when a goal is scored.
 
     endscreenloop(): Creates the end screen that displays the winner of the game and the final score when one of the teams reaches the maximum score.
 
@@ -70,7 +70,7 @@ The project is a simulation of a simple and well known arcade game known as air 
 Test Case #1: Bumper Movement 
 Check to see if the bumpers slide left and right as intended.
 
-Steps to Test: Launch the software. To start the game, press the Space Bar. Press the arrow key to the right. Make sure the right-hand blue bumper moves. On the left arrow key, press. Make sure the left-hand blue bumper moves. Press the "d" key. Check to see if the red bumper shifts right. Press the "a" key. Make sure the left-hand red bumper moves.
+Steps to Test: Launch the software. To start the game, press the Space Bar. Press the arrow key to the right. Make sure the right-hand purple bumper moves. On the left arrow key, press. Make sure the left-hand purple bumper moves. Press the "d" key. Check to see if the green bumper shifts right. Press the "a" key. Make sure the left-hand green bumper moves.
 
 Anticipated Result: In reaction to keyboard key inputs, the bumpers ought should shift to the left and right.
 
@@ -86,7 +86,7 @@ Expected Result: The puck should bounce off each bumper when the space bar is fi
 Test Case #3: The Direction and Overall Movement of the Puck
 Check to see if the puck moves on the screen accurately at first.
 
-Steps to Test: Launch the software. To start the game, press the Space Bar. To start the game, press the Space Bar. Never adjust the bumpers or paddles. Make sure the puck is moving on the screen.
+Steps to Test: Launch the software. To start the game, press the Space Bar. To start the game, press the Space Bar. Never adjust the bumpers. Make sure the puck is moving on the screen.
 
 Expected Result: Depending on how the puck bounces off the bumpers, it should travel across the screen when the space bar is first pressed.
 
