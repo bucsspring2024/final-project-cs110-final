@@ -20,7 +20,7 @@ The project is a simulation of a simple and well known arcade game known as air 
 
 ### Initial Design
 
-![initial gui](assets/oiginal_idea_sketch.png)
+![initial gui](assets/original_idea_sketch.png)
 
 ### Final Design
 
