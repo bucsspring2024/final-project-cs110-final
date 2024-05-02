@@ -142,7 +142,7 @@ class Controller:
                         if random.randint(-10, 10) < 0:
                             direction = -1
                         self.puck.y_vel = self.puck.max_vel * direction
-                    if event.puck == pygame.K_1:
+                    if event.key == pygame.K_1:
                         self.puck.x_vel = 2 * math.cos(math.radians(15))
                         self.puck.y_vel = - 2 * math.sin(math.radians(15))
                     if event.key == pygame.K_2:
