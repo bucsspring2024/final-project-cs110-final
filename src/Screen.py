@@ -32,7 +32,7 @@ class Screen:
         """
         self.screen.fill(self.white)
         font = pygame.font.Font(None, 100)
-        text = font.render("PADDLES", True, "black")
+        text = font.render("Bumpers", True, "black")
         intro_text_rect = text.get_rect()
         half_text_width = intro_text_rect.width // 2
         half_text_height = intro_text_rect.height // 2
@@ -48,16 +48,16 @@ class Screen:
         instru_text_y_pos = self.window_height - (self.window_height/3)
         self.screen.blit(text, (instru_text_x_pos, instru_text_y_pos))
         text = font.render("Team Purple: use the arrow keys to move your bumper left, right, up, and down", True, "white")
-        instrublue_text_x_pos = 0
-        instrublue_text_y_pos = instru_text_y_pos + space_bw_text
-        self.screen.blit(text, (instrublue_text_x_pos, instrublue_text_y_pos))
+        instrupurple_text_x_pos = 0
+        instrupurple_text_y_pos = instru_text_y_pos + space_bw_text
+        self.screen.blit(text, (instrupurple_text_x_pos, instrupurple_text_y_pos))
         text = font.render("Team Green: use the a, d, s, and w keys to move your bumper left, right, up, and down", True, "white")
-        instrured_text_x_pos = 0
-        instrured_text_y_pos = instrublue_text_y_pos + space_bw_text
-        self.screen.blit(text, (instrured_text_x_pos, instrured_text_y_pos))
+        instrugreen_text_x_pos = 0
+        instrugreen_text_y_pos = instrupurple_text_y_pos + space_bw_text
+        self.screen.blit(text, (instrugreen_text_x_pos, instrugreen_text_y_pos))
         text = font.render("Try to get the puck past the opposing teams bumper", True, "white")
         instrugoal_text_x_pos = 0
-        instrugoal_text_y_pos = instrured_text_y_pos + space_bw_text
+        instrugoal_text_y_pos = instrugreen_text_y_pos + space_bw_text
         self.screen.blit(text, (instrugoal_text_x_pos, instrugoal_text_y_pos))
         text = font.render("First team to 3 points wins!", True, "white")
         instruwin_text_x_pos = 0
