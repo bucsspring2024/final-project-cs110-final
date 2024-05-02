@@ -242,9 +242,9 @@ class Controller:
                     self.state = "QUIT"
             
             if self.green_score >= self.purple_score:
-                winner = "RED"
+                winner = "Green"
             elif self.green_score <= self.purple_score:
-                winner = "BLUE"
+                winner = "Purple"
                 
             self.screen.fill(self.white)
             font = pygame.font.Font(None, 100)
