@@ -110,6 +110,7 @@ class Controller:
             instrustart_text_x_pos = 0
             instrustart_text_y_pos = instruwin_text_y_pos + space_bw_text
             self.screen.blit(text, (instrustart_text_x_pos, instrustart_text_y_pos))
+            
             pygame.display.flip()
 
     def score(self):
@@ -150,21 +151,21 @@ class Controller:
                     if event.key == pygame.K_ESCAPE:
                         self.state = "QUIT"
                     if event.key == pygame.K_a:
-                        self.red_paddle.move("left", None)  # Move left (no vertical movement)
+                        self.red_paddle.move("left", None)
                     if event.key == pygame.K_d:
-                        self.red_paddle.move("right", None)  # Move right (no vertical movement)
+                        self.red_paddle.move("right", None)
                     if event.key == pygame.K_w:
-                        self.red_paddle.move(None, "up")  # Move up (no horizontal movement)
+                        self.red_paddle.move(None, "up")
                     if event.key == pygame.K_s:
-                        self.red_paddle.move(None, "down")  # Move down (no horizontal movement)
+                        self.red_paddle.move(None, "down")
                     if event.key == pygame.K_LEFT:
-                        self.blue_paddle.move("left", None)  # Move left (no vertical movement)
+                        self.blue_paddle.move("left", None)
                     if event.key == pygame.K_RIGHT:
-                        self.blue_paddle.move("right", None)  # Move right (no vertical movement)
+                        self.blue_paddle.move("right", None)
                     if event.key == pygame.K_UP:
-                        self.blue_paddle.move(None, "up")  # Move up (no horizontal movement)
+                        self.blue_paddle.move(None, "up")
                     if event.key == pygame.K_DOWN:
-                        self.blue_paddle.move(None, "down")  # Move down (no horizontal movement)
+                        self.blue_paddle.move(None, "down")
             if self.red_score >= game_to or self.blue_score >= game_to:
                 self.state = "END"
                     
@@ -175,7 +176,6 @@ class Controller:
             self.ball.move()
             self.score()
             
-            # Ensure bumpers stay within the window boundaries
             if self.red_paddle.rect.x < 0:
                 self.red_paddle.rect.x = 0
             if self.red_paddle.rect.x > self.window_width - self.red_paddle.width:
@@ -194,7 +194,6 @@ class Controller:
             if self.blue_paddle.rect.y > self.window_height - self.blue_paddle.height:
                 self.blue_paddle.rect.y = self.window_height - self.blue_paddle.height
                 
-            # Handle collisions and scoring
             if pygame.sprite.collide_rect(self.ball, self.blue_paddle):
                 self.ball.y_vel *= -1
                 self.ball.x_vel = random.uniform(-1, 1)
@@ -202,7 +201,7 @@ class Controller:
                 self.ball.y_vel *= -1
                 self.ball.x_vel = random.uniform(-1, 1)
                 
-            
+             
             if self.ball.rect.x < 0:
                 self.ball.x_vel *= -1
             if self.ball.rect.x > self.window_width - self.ball.radius:
@@ -218,8 +217,8 @@ class Controller:
                 self.ball.reset()
                 self.red_paddle.reset()
                 self.blue_paddle.reset()
-            
-        pygame.display.flip()
+                
+            pygame.display.flip()
 
     def endscreenloop(self):
         """
