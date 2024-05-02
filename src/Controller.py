@@ -40,13 +40,11 @@ class Controller:
         self.window_height = 800
         self.white = (255, 255, 255)
         
-
         self.screen = pygame.display.set_mode([self.window_width, self.window_height])
         self.ball = Puck(self.window_width / 2 - (ball_radius / 2), self.window_height / 2 - (ball_radius / 2), ball_radius)
         self.sample_paddle = Bumper()
         self.red_paddle = Bumper((self.window_width / 2) - (self.sample_paddle.width / 2), buffer, "red")
         self.blue_paddle = Bumper((self.window_width / 2) - (self.sample_paddle.width / 2), (self.window_height - buffer - self.sample_paddle.height), "blue")
-
         
         self.red_score = red_score
         self.blue_score = blue_score
@@ -92,15 +90,15 @@ class Controller:
             instru_text_x_pos = 0
             instru_text_y_pos = self.window_height - (self.window_height / 3)
             self.screen.blit(text, (instru_text_x_pos, instru_text_y_pos))
-            text = font.render("Team Red: use the a and d keys to move your bumper left and right", True, "black")
+            text = font.render("Team Red: use the a, d, w, s keys to move your bumper", True, "black")
             instrublue_text_x_pos = 0
             instrublue_text_y_pos = instru_text_y_pos + space_bw_text
             self.screen.blit(text, (instrublue_text_x_pos, instrublue_text_y_pos))
-            text = font.render("Team Blue: use the arrow keys to move your bumper left and right", True, "black")
+            text = font.render("Team Blue: use the arrow keys to move your bumper", True, "black")
             instrured_text_x_pos = 0
             instrured_text_y_pos = instrublue_text_y_pos + space_bw_text
             self.screen.blit(text, (instrured_text_x_pos, instrured_text_y_pos))
-            text = font.render("Try to get the puck past the opposing teams bumper", True, "black")
+            text = font.render("Try to get the puck past the opposing team's bumper", True, "black")
             instrugoal_text_x_pos = 0
             instrugoal_text_y_pos = instrured_text_y_pos + space_bw_text
             self.screen.blit(text, (instrugoal_text_x_pos, instrugoal_text_y_pos))
@@ -155,10 +153,18 @@ class Controller:
                         self.red_paddle.move("left")
                     if event.key == pygame.K_d:
                         self.red_paddle.move("right")
+                    if event.key == pygame.K_w:
+                        self.red_paddle.move("up")
+                    if event.key == pygame.K_s:
+                        self.red_paddle.move("down")
                     if event.key == pygame.K_LEFT:
                         self.blue_paddle.move("left")
                     if event.key == pygame.K_RIGHT:
                         self.blue_paddle.move("right")
+                    if event.key == pygame.K_UP:
+                        self.blue_paddle.move("up")
+                    if event.key == pygame.K_DOWN:
+                        self.blue_paddle.move("down")
             if self.red_score >= game_to or self.blue_score >= game_to:
                 self.state = "END"
                     
@@ -173,11 +179,20 @@ class Controller:
                 self.red_paddle.rect.x = 0
             if self.red_paddle.rect.x > self.window_width - self.red_paddle.width:
                 self.red_paddle.rect.x = self.window_width - self.red_paddle.width
+            if self.red_paddle.rect.y < 0:
+                self.red_paddle.rect.y = 0
+            if self.red_paddle.rect.y > self.window_height - self.red_paddle.height:
+                self.red_paddle.rect.y = self.window_height - self.red_paddle.height
+                
             if self.blue_paddle.rect.x < 0:
                 self.blue_paddle.rect.x = 0
             if self.blue_paddle.rect.x > self.window_width - self.blue_paddle.width:
                 self.blue_paddle.rect.x = self.window_width - self.blue_paddle.width
-            
+            if self.blue_paddle.rect.y < 0:
+                self.blue_paddle.rect.y = 0
+            if self.blue_paddle.rect.y > self.window_height - self.blue_paddle.height:
+                self.blue_paddle.rect.y = self.window_height - self.blue_paddle.height
+                
             if pygame.sprite.collide_rect(self.ball, self.blue_paddle):
                 self.ball.y_vel *= -1
                 self.ball.x_vel = random.uniform(-1, 1)
@@ -191,12 +206,12 @@ class Controller:
             if self.ball.rect.x > self.window_width - self.ball.radius:
                 self.ball.x_vel *= -1
                 
-            if self.ball.rect.y < self.red_paddle.rect.y:
+            if self.ball.rect.y < 0:
                 self.blue_score += 1
                 self.ball.reset()
                 self.red_paddle.reset()
                 self.blue_paddle.reset()
-            if self.ball.rect.y > self.blue_paddle.rect.y + self.blue_paddle.height:
+            if self.ball.rect.y > self.window_height:
                 self.red_score += 1
                 self.ball.reset()
                 self.red_paddle.reset()

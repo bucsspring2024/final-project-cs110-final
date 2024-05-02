@@ -25,17 +25,23 @@ class Bumper(pygame.sprite.Sprite):
         self.rect.y = y
         self.bumper_vel = 90
 
-    def move(self, dir):
+    def move(self, dir_x, dir_y):
         """
-        Move the paddle left or right based on the specified direction.
+        Move the bumper based on the specified directions.
 
         Parameters:
-        dir (str): The direction in which to move the paddle.
+        dir_x (str): The direction in which to move the bumper horizontally.
+        dir_y (str): The direction in which to move the bumper vertically.
         """
-        if dir == "left":
+        if dir_x == "left":
             self.rect.x -= self.bumper_vel
-        if dir == "right":
+        if dir_x == "right":
             self.rect.x += self.bumper_vel
+        
+        if dir_y == "up":
+            self.rect.y -= self.bumper_vel
+        if dir_y == "down":
+            self.rect.y += self.bumper_vel
         
     def reset(self):
         """
