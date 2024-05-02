@@ -194,10 +194,10 @@ class Controller:
             if self.purple_bumper.rect.y > self.window_height - self.purple_bumper.height:
                 self.purple_bumper.rect.y = self.window_height - self.purple_bumper.height
                 
-            if pygame.sprite.collide_rect(self.ball, self.purple_bumper):
+            if pygame.sprite.collide_rect(self.puck, self.purple_bumper):
                 self.puck.y_vel *= -1
                 self.puck.x_vel = random.uniform(-1, 1)
-            if pygame.sprite.collide_rect(self.ball, self.green_bumper):
+            if pygame.sprite.collide_rect(self.puck, self.green_bumper):
                 self.puck.y_vel *= -1
                 self.puck.x_vel = random.uniform(-1, 1)
                 
