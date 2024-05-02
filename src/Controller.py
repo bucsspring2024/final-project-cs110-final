@@ -10,49 +10,49 @@ class Controller:
     Class representing the main controller for the game.
 
     Attributes:
-    red_score (int): The initial score for the red team.
-    blue_score (int): The initial score for the blue team.
+    green_score (int): The initial score for the green team.
+    purple_score (int): The initial score for the purple team.
     window_width (int): The width of the game window.
     window_height (int): The height of the game window.
-    green (tuple): RGB values representing the color green.
+    white (tuple): RGB values representing the color white.
     screen (pygame.Surface): The game window surface.
-    ball (Ball): The ball object in the game.
-    sample_paddle (Paddle): A sample paddle used for initialization.
-    red_paddle (Paddle): The paddle for the red team.
-    blue_paddle (Paddle): The paddle for the blue team.
-    red_score (int): The current score of the red team.
-    blue_score (int): The current score of the blue team.
+    puck (Puck): The puck object in the game.
+    sample_bumper (Bumper): A sample bumper used for initialization.
+    green_bumper (Bumper): The bumper for the green team.
+    purple_bumper (Bumper): The bumper for the purple team.
+    green_score (int): The current score of the green team.
+    purple_score (int): The current score of the purple team.
     allsprites (pygame.sprite.Group): A group containing all game sprites.
     state (str): The current state of the game ("HOME", "GAME", "END", or "QUIT").
     """
-    def __init__(self, red_score=0, blue_score=0):
+    def __init__(self, green_score=0, purple_score=0):
         """
         Initializes the game controller with optional initial scores.
 
         Parameters:
-        red_score (int): The initial score for the red team (default is 0).
-        blue_score (int): The initial score for the blue team (default is 0).
+        green_score (int): The initial score for the green team (default is 0).
+        purple_score (int): The initial score for the purple team (default is 0).
         """
         pygame.init()
         buffer = 10
-        ball_radius = 30
+        puck_radius = 30
         self.window_width = 750
         self.window_height = 800
         self.white = (255, 255, 255)
         
         self.screen = pygame.display.set_mode([self.window_width, self.window_height])
-        self.ball = Puck(self.window_width / 2 - (ball_radius / 2), self.window_height / 2 - (ball_radius / 2), ball_radius)
-        self.sample_paddle = Bumper()
-        self.red_paddle = Bumper((self.window_width / 2) - (self.sample_paddle.width / 2), buffer, "red")
-        self.blue_paddle = Bumper((self.window_width / 2) - (self.sample_paddle.width / 2), (self.window_height - buffer - self.sample_paddle.height), "blue")
+        self.puck = Puck(self.window_width / 2 - (puck_radius / 2), self.window_height / 2 - (puck_radius / 2), puck_radius)
+        self.sample_bumper = Bumper()
+        self.green_bumper = Bumper((self.window_width / 2) - (self.sample_bumper.width / 2), buffer, "green")
+        self.purple_bumper = Bumper((self.window_width / 2) - (self.sample_bumper.width / 2), (self.window_height - buffer - self.sample_bumper.height), "purple")
         
-        self.red_score = red_score
-        self.blue_score = blue_score
+        self.green_score = green_score
+        self.purple_score = purple_score
         
         self.allsprites = pygame.sprite.Group()
-        self.allsprites.add(self.ball)
-        self.allsprites.add(self.red_paddle)
-        self.allsprites.add(self.blue_paddle)
+        self.allsprites.add(self.puck)
+        self.allsprites.add(self.green_bumper)
+        self.allsprites.add(self.purple_bumper)
         
         self.state = "HOME"
         
@@ -94,7 +94,7 @@ class Controller:
             instrublue_text_x_pos = 0
             instrublue_text_y_pos = instru_text_y_pos + space_bw_text
             self.screen.blit(text, (instrublue_text_x_pos, instrublue_text_y_pos))
-            text = font.render("Team Blue: use the arrow keys to move your bumper", True, "black")
+            text = font.render("Team Purple: use the arrow keys to move your bumper", True, "black")
             instrured_text_x_pos = 0
             instrured_text_y_pos = instrublue_text_y_pos + space_bw_text
             self.screen.blit(text, (instrured_text_x_pos, instrured_text_y_pos))
@@ -118,10 +118,10 @@ class Controller:
         Displays the current scores on the game window.
          """
         font = pygame.font.Font(None, 48)
-        self.red_score_text = font.render(f"{self.red_score}", True, "red")
-        self.blue_score_text = font.render(f"{self.blue_score}", True, "blue")
-        self.screen.blit(self.red_score_text, (3, self.window_height / 4))
-        self.screen.blit(self.blue_score_text, (self.window_width - 20, 3 * (self.window_height / 4)))
+        self.green_score_text = font.render(f"{self.green_score}", True, "green")
+        self.purple_score_text = font.render(f"{self.purple_score}", True, "purple")
+        self.screen.blit(self.green_score_text, (3, self.window_height / 4))
+        self.screen.blit(self.purple_score_text, (self.window_width - 20, 3 * (self.window_height / 4)))
         
     def gameloop(self):   
         """
@@ -141,82 +141,82 @@ class Controller:
                             direction = 1
                         if random.randint(-10, 10) < 0:
                             direction = -1
-                        self.ball.y_vel = self.ball.max_vel * direction
-                    if event.key == pygame.K_1:
-                        self.ball.x_vel = 2 * math.cos(math.radians(15))
-                        self.ball.y_vel = - 2 * math.sin(math.radians(15))
+                        self.puck.y_vel = self.puck.max_vel * direction
+                    if event.puck == pygame.K_1:
+                        self.puck.x_vel = 2 * math.cos(math.radians(15))
+                        self.puck.y_vel = - 2 * math.sin(math.radians(15))
                     if event.key == pygame.K_2:
-                        self.ball.x_vel = - 2 * math.cos(math.radians(15))
-                        self.ball.y_vel = 2 * math.sin(math.radians(15))
+                        self.puck.x_vel = - 2 * math.cos(math.radians(15))
+                        self.puck.y_vel = 2 * math.sin(math.radians(15))
                     if event.key == pygame.K_ESCAPE:
                         self.state = "QUIT"
                     if event.key == pygame.K_a:
-                        self.red_paddle.move("left", None)
+                        self.green_bumper.move("left", None)
                     if event.key == pygame.K_d:
-                        self.red_paddle.move("right", None)
+                        self.green_bumper.move("right", None)
                     if event.key == pygame.K_w:
-                        self.red_paddle.move(None, "up")
+                        self.green_bumper.move(None, "up")
                     if event.key == pygame.K_s:
-                        self.red_paddle.move(None, "down")
+                        self.green_bumper.move(None, "down")
                     if event.key == pygame.K_LEFT:
-                        self.blue_paddle.move("left", None)
+                        self.purple_pbumper.move("left", None)
                     if event.key == pygame.K_RIGHT:
-                        self.blue_paddle.move("right", None)
+                        self.purple_bumper.move("right", None)
                     if event.key == pygame.K_UP:
-                        self.blue_paddle.move(None, "up")
+                        self.purple_bumper.move(None, "up")
                     if event.key == pygame.K_DOWN:
-                        self.blue_paddle.move(None, "down")
-            if self.red_score >= game_to or self.blue_score >= game_to:
+                        self.purple_bumper.move(None, "down")
+            if self.green_score >= game_to or self.purple_score >= game_to:
                 self.state = "END"
                     
             
             self.screen.fill(self.white)
             pygame.draw.line(self.screen, "black", (0, self.window_height / 2), (self.window_width, self.window_height / 2), 2)
             self.allsprites.draw(self.screen)
-            self.ball.move()
+            self.puck.move()
             self.score()
             
-            if self.red_paddle.rect.x < 0:
-                self.red_paddle.rect.x = 0
-            if self.red_paddle.rect.x > self.window_width - self.red_paddle.width:
-                self.red_paddle.rect.x = self.window_width - self.red_paddle.width
-            if self.red_paddle.rect.y < 0:
-                self.red_paddle.rect.y = 0
-            if self.red_paddle.rect.y > self.window_height - self.red_paddle.height:
-                self.red_paddle.rect.y = self.window_height - self.red_paddle.height
+            if self.green_bumper.rect.x < 0:
+                self.green_bumper.rect.x = 0
+            if self.green_bumper.rect.x > self.window_width - self.green_bumper.width:
+                self.green_bumper.rect.x = self.window_width - self.green_bumper.width
+            if self.green_bumper.rect.y < 0:
+                self.green_bumper.rect.y = 0
+            if self.green_bumper.rect.y > self.window_height - self.green_bumper.height:
+                self.green_bumper.rect.y = self.window_height - self.green_bumper.height
                 
-            if self.blue_paddle.rect.x < 0:
-                self.blue_paddle.rect.x = 0
-            if self.blue_paddle.rect.x > self.window_width - self.blue_paddle.width:
-                self.blue_paddle.rect.x = self.window_width - self.blue_paddle.width
-            if self.blue_paddle.rect.y < 0:
-                self.blue_paddle.rect.y = 0
-            if self.blue_paddle.rect.y > self.window_height - self.blue_paddle.height:
-                self.blue_paddle.rect.y = self.window_height - self.blue_paddle.height
+            if self.purple_bumper.rect.x < 0:
+                self.purple_bumper.rect.x = 0
+            if self.purple_bumper.rect.x > self.window_width - self.purple_bumper.width:
+                self.purple_bumper.rect.x = self.window_width - self.purple_bumper.width
+            if self.purple_bumper.rect.y < 0:
+                self.purple_bumper.rect.y = 0
+            if self.purple_bumper.rect.y > self.window_height - self.purple_bumper.height:
+                self.purple_bumper.rect.y = self.window_height - self.purple_bumper.height
                 
-            if pygame.sprite.collide_rect(self.ball, self.blue_paddle):
-                self.ball.y_vel *= -1
-                self.ball.x_vel = random.uniform(-1, 1)
-            if pygame.sprite.collide_rect(self.ball, self.red_paddle):
-                self.ball.y_vel *= -1
-                self.ball.x_vel = random.uniform(-1, 1)
+            if pygame.sprite.collide_rect(self.ball, self.purple_bumper):
+                self.puck.y_vel *= -1
+                self.puck.x_vel = random.uniform(-1, 1)
+            if pygame.sprite.collide_rect(self.ball, self.green_bumper):
+                self.puck.y_vel *= -1
+                self.puck.x_vel = random.uniform(-1, 1)
                 
              
-            if self.ball.rect.x < 0:
-                self.ball.x_vel *= -1
-            if self.ball.rect.x > self.window_width - self.ball.radius:
-                self.ball.x_vel *= -1
+            if self.puck.rect.x < 0:
+                self.puck.x_vel *= -1
+            if self.puck.rect.x > self.window_width - self.puck.radius:
+                self.puck.x_vel *= -1
                 
-            if self.ball.rect.y < 0:
-                self.blue_score += 1
-                self.ball.reset()
-                self.red_paddle.reset()
-                self.blue_paddle.reset()
-            if self.ball.rect.y > self.window_height:
-                self.red_score += 1
-                self.ball.reset()
-                self.red_paddle.reset()
-                self.blue_paddle.reset()
+            if self.puck.rect.y < 0:
+                self.purple_score += 1
+                self.puck.reset()
+                self.green_bumper.reset()
+                self.purple_bumper.reset()
+            if self.puck.rect.y > self.window_height:
+                self.green_score += 1
+                self.puck.reset()
+                self.green_bumper.reset()
+                self.purple_bumper.reset()
                 
             pygame.display.flip()
 
@@ -226,7 +226,7 @@ class Controller:
 
         Displays the winner and final scores.
         """  
-        new_result = f"PREVIOUS GAME FINAL SCORE: Blue: {self.blue_score} Red: {self.red_score}"
+        new_result = f"PREVIOUS GAME FINAL SCORE: Purple: {self.purple_score} Green: {self.green_score}"
         try:
             with open("previousscore.txt", "r") as fptr:
                 old_result = fptr.read()
@@ -241,9 +241,9 @@ class Controller:
                 if event.type == pygame.QUIT:
                     self.state = "QUIT"
             
-            if self.red_score >= self.blue_score:
+            if self.green_score >= self.purple_score:
                 winner = "RED"
-            elif self.red_score <= self.blue_score:
+            elif self.green_score <= self.purple_score:
                 winner = "BLUE"
                 
             self.screen.fill(self.white)
@@ -258,7 +258,7 @@ class Controller:
             self.screen.blit(text, winner_text_rect_center)
             
             font = pygame.font.Font(None, 60)
-            text = font.render(f"FINAL SCORE: Blue: {self.blue_score} Red: {self.red_score}", True, "black")
+            text = font.render(f"FINAL SCORE: Purple: {self.purple_score} Green: {self.green_score}", True, "black")
             score_text_rect = text.get_rect()
             half_text_width = score_text_rect.width // 2
             half_text_height = score_text_rect.height // 2

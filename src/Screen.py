@@ -14,7 +14,7 @@ class Screen:
     __init__(self): Initializes a new Screens instance and sets up the game window.
     startscreen(self): Renders the start screen with game instructions.
     gamescreen(self): Renders the main game screen with a dividing line.
-    endscreen(self, winner="BLUE", red_score=0, blue_score=0): Renders the end screen with the winner and scores.
+    endscreen(self, winner="GREEN", green_score=0, purple_score=0): Renders the end screen with the winner and scores.
     """
     def __init__(self):
         """
@@ -47,11 +47,11 @@ class Screen:
         instru_text_x_pos = 0
         instru_text_y_pos = self.window_height - (self.window_height/3)
         self.screen.blit(text, (instru_text_x_pos, instru_text_y_pos))
-        text = font.render("Team Blue: use the arrow keys to move your bumper left and right", True, "white")
+        text = font.render("Team Purple: use the arrow keys to move your bumper left, right, up, and down", True, "white")
         instrublue_text_x_pos = 0
         instrublue_text_y_pos = instru_text_y_pos + space_bw_text
         self.screen.blit(text, (instrublue_text_x_pos, instrublue_text_y_pos))
-        text = font.render("Team Red: use the a and d keys to move your bumper left and right", True, "white")
+        text = font.render("Team Green: use the a, d, s, and w keys to move your bumper left, right, up, and down", True, "white")
         instrured_text_x_pos = 0
         instrured_text_y_pos = instrublue_text_y_pos + space_bw_text
         self.screen.blit(text, (instrured_text_x_pos, instrured_text_y_pos))
@@ -75,14 +75,14 @@ class Screen:
         
         pygame.display.flip()
         
-    def endscreen(self, winner="BLUE", red_score=0, blue_score=0):
+    def endscreen(self, winner="PURPLE", green_score=0, purple_score=0):
         """
         Renders the end screen with the winner and scores.
 
         Parameters:
-        - winner (str): The winning team, default is "BLUE".
-        - red_score (int): The score of the red team.
-        - blue_score (int): The score of the blue team.
+        - winner (str): The winning team, default is "PURPLE".
+        - green_score (int): The score of the green team.
+        - purple_score (int): The score of the purple team.
         """
         self.screen.fill(self.white)
         font = pygame.font.Font(None, 100)
@@ -96,23 +96,23 @@ class Screen:
         self.screen.blit(text, winner_text_rect_center)
         
         font = pygame.font.Font(None, 48)
-        text = font.render(f"Team Red: {red_score}", True, "black")
-        red_text_rect = text.get_rect()
-        half_text_width = red_text_rect.width // 2
-        half_text_height = red_text_rect.height // 2
-        red_text_x_pos = (self.window_width // 2) - half_text_width
-        red_text_y_pos = winner_text_y_pos + (2*winner_text_rect.height)
-        red_text_rect_center = (red_text_x_pos, red_text_y_pos)
-        self.screen.blit(text, red_text_rect_center)
+        text = font.render(f"Team Green: {green_score}", True, "black")
+        green_text_rect = text.get_rect()
+        half_text_width = green_text_rect.width // 2
+        half_text_height = green_text_rect.height // 2
+        green_text_x_pos = (self.window_width // 2) - half_text_width
+        green_text_y_pos = winner_text_y_pos + (2*winner_text_rect.height)
+        green_text_rect_center = (green_text_x_pos, green_text_y_pos)
+        self.screen.blit(text, green_text_rect_center)
         
         font = pygame.font.Font(None, 48)
-        text = font.render(f"Team Blue: {blue_score}", True, "black")
-        blue_text_rect = text.get_rect()
-        half_text_width = blue_text_rect.width // 2
-        half_text_height = blue_text_rect.height // 2
-        blue_text_x_pos = (self.window_width // 2) - half_text_width
-        blue_text_y_pos = red_text_y_pos + red_text_rect.height
-        blue_text_rect_center = (blue_text_x_pos, blue_text_y_pos)
-        self.screen.blit(text, blue_text_rect_center)
+        text = font.render(f"Team Purple: {purple_score}", True, "black")
+        purple_text_rect = text.get_rect()
+        half_text_width = purple_text_rect.width // 2
+        half_text_height = purple_text_rect.height // 2
+        purple_text_x_pos = (self.window_width // 2) - half_text_width
+        purple_text_y_pos = green_text_y_pos + green_text_rect.height
+        purple_text_rect_center = (purple_text_x_pos, purple_text_y_pos)
+        self.screen.blit(text, purple_text_rect_center)
         
         pygame.display.flip()

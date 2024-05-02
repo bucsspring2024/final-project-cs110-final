@@ -4,14 +4,14 @@ import pygame
 class Bumper(pygame.sprite.Sprite):
     def __init__(self, x=1, y=1, color="black", width=150, height=10):
         """
-        Initialize the paddle objects
+        Initialize the bumper objects
 
         Parameters:
-        x (int): The initial x-coordinate of the paddle.
-        y (int): The initial y-coordinate of the paddle.
-        color (str): The color of the paddle.
-        width (int): The width of the paddle.
-        height (int): The height of the paddle.
+        x (int): The initial x-coordinate of the bumper.
+        y (int): The initial y-coordinate of the bumper.
+        color (str): The color of the bumper.
+        width (int): The width of the bumper.
+        height (int): The height of the bumper.
         """
         super().__init__()
         self.starting_xpos = x
@@ -44,7 +44,7 @@ class Bumper(pygame.sprite.Sprite):
         
     def reset(self):
         """
-        Reset the paddle position.
+        Reset the bumper position.
         """
 
         self.rect.x = self.starting_xpos
