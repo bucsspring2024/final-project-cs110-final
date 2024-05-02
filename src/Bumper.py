@@ -37,11 +37,10 @@ class Bumper(pygame.sprite.Sprite):
             self.rect.x -= self.bumper_vel
         if dir_x == "right":
             self.rect.x += self.bumper_vel
-        
         if dir_y == "up":
-            self.rect.y -= self.bumper_vel
-        if dir_y == "down":
             self.rect.y += self.bumper_vel
+        if dir_y == "down":
+            self.rect.y -= self.bumper_vel
         
     def reset(self):
         """
