@@ -20,11 +20,11 @@ The project is a simulation of a simple and well known arcade game known as air 
 
 ### Initial Design
 
-![initial gui](assets/gui.jpg)
+![initial gui](assets/oiginal_idea_sketch.png)
 
 ### Final Design
 
-![final gui](assets/finalgui.jpg)
+![final gui](assets/running_program_screenshot.png)
 
 ## Program Design
 
